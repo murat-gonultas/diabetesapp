@@ -9,13 +9,13 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DiabetesApplication {
-	private static final Logger log = LoggerFactory.getLogger(DiabetesApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(DiabetesApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(DiabetesApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner demo(FoodItemRepository repository) {
 		return (args) -> {
 			//repository.save(new FoodItem("kelle", 102.3));
@@ -28,7 +28,7 @@ public class DiabetesApplication {
 			}
 			log.info("");
 		};
-	}
+	}*/
 
 }
 

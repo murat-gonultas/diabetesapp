@@ -36,8 +36,8 @@ public class FoodItemController {
     }
 
     @PostMapping("/addfooditem")
-    public String addFoodItem(@ModelAttribute FoodItem foodItem, Model model) {
-        model.addAttribute("foodItem", foodItem);
+    public String addFoodItem(@ModelAttribute FoodItem foodItem) {
+        //model.addAttribute("foodItem", foodItem);
         foodItemService.addFoodItem(foodItem);
         return "redirect:/listfooditems";
     }
