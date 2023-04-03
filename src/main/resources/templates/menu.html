@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+
+<table>
+  <tr>
+    <td><a href="/listfooditems">Manage Food Item List</a></td>
+    <td><a href="/menu">Build a menu</a></td>
+  </tr>
+</table>
+
+<h3>Select Food Items from below list for your menu:</h3>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Food Name</th>
+    <th>Calori</th>
+  </tr>
+  <tr th:if="${#lists.isEmpty(foods)}">
+    <td colspan="7">Please contact administrator. No food items available.</td>
+  </tr>
+  <tr th:each="food : ${foods}">
+    <td th:text="${food.id}"></td>
+    <td th:text="${food.foodName}"></td>
+    <td th:text="${food.calories}"></td>
+    <td><a th:href="@{/menu/{id}(id=${food.id})}">Add</a></td>
+  </tr>
+</table>
+
+<h3>Total Calories: </h3>
+<h3>
+  <span th:text="${mytotalCalories}"></span>
+</h3>
+
+<h3>
+  <td><a href="/menu/clear">Clear Menu</a></td>
+</h3>
+
+</body>
+</html>

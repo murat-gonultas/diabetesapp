@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Item(s)</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td><a href="/listfooditems">Manage Food Item List</a></td>
+        <td><a href="/menu">Build a menu</a></td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Food Name</th>
+        <th>Calori</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(foods)}">
+        <td colspan="7">No Records found. Add some...!</td>
+    </tr>
+    <tr><td>Food Item List</td></tr>
+    <tr th:each="food : ${foods}">
+        <td th:text="${food.id}"></td>
+        <td th:text="${food.foodName}"></td>
+        <td th:text="${food.calories}"></td>
+        <td><a th:href="@{/edit/{id}(id=${food.id})}">Edit</a></td>
+        <td><a th:href="@{/delete/{id}(id=${food.id})}">Delete</a></td>
+    </tr>
+    <tr>
+        <td><a href="/addfooditem">Add new food item</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
