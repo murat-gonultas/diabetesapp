@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Food Item</title>
+</head>
+<body>
+
+<h1>Form</h1>
+<form action="#" th:action="@{/update/{id}(id=${foodItem.id})}" th:object="${foodItem}" method="post">
+  <p>Food Name: <input type="text" th:field="*{foodName}" /></p>
+  <p>Calories: <input type="text" th:field="*{calories}" /></p>
+  <p><input type="submit" value="Update" /></p>
+  <p><a href="/listfooditems">Cancel</a></p>
+</form>
+
+</body>
+</html>

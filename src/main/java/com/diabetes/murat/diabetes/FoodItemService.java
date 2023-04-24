@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class FoodItemService {
     @Autowired
-    private final FoodItemRepository repository;
+    private FoodItemRepository repository;
 
     public List<FoodItem> getFoodItems() {
         return repository.findAll();
@@ -22,8 +22,8 @@ public class FoodItemService {
         return repository.findById(id);
     }
 
-    public void addFoodItem(FoodItem foodItem) {
-        repository.save(foodItem);
+    public FoodItem addFoodItem(FoodItem foodItem) {
+        return repository.save(foodItem);
     }
 
     public void deleteFoodItemById(long id) {

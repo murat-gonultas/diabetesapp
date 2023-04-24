@@ -13,16 +13,16 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class FoodItemController {
 
     List<FoodItem> mymenu = new ArrayList<>();
-    String strTotalCalories = new String("0.0");
+    Double totalCalories = 0.0;
 
     @Autowired
-    private final FoodItemService foodItemService;
+    private FoodItemService foodItemService;
 
-    @GetMapping("/listfooditems")
+    @GetMapping("/listfooditems") //j
     public String getFoodItems(Model model){
         List<FoodItem> foodItems=foodItemService.getFoodItems();
         model.addAttribute("foods", foodItems);
@@ -68,7 +68,7 @@ public class FoodItemController {
     public String showIndex(Model model) {
         List<FoodItem> foodItems=foodItemService.getFoodItems();
         model.addAttribute("foods", foodItems);
-        model.addAttribute("mytotalCalories", strTotalCalories);
+        model.addAttribute("mytotalCalories", totalCalories);
         return "menu";
     }
 
@@ -76,7 +76,7 @@ public class FoodItemController {
     public String showMyMenu(Model model) {
         List<FoodItem> foodItems=foodItemService.getFoodItems();
         model.addAttribute("foods", foodItems);
-        model.addAttribute("mytotalCalories", strTotalCalories);
+        model.addAttribute("mytotalCalories", totalCalories);
         return "menu";
     }
 
@@ -85,8 +85,8 @@ public class FoodItemController {
         List<FoodItem> foodItems=foodItemService.getFoodItems();
         model.addAttribute("foods", foodItems);
         mymenu.clear();
-        strTotalCalories = "0.0";
-        model.addAttribute("mytotalCalories", strTotalCalories);
+        totalCalories = 0.0;
+        model.addAttribute("mytotalCalories", totalCalories);
         return "menu";
     }
 
@@ -103,10 +103,10 @@ public class FoodItemController {
         for (FoodItem i : mymenu)
             totalCalories += i.getCalories();
 
-        strTotalCalories = Double.toString(totalCalories);
-        System.out.println("Total calories: " + strTotalCalories);
+        this.totalCalories = totalCalories;
+        System.out.println("Total calories: " + totalCalories);
 
-        model.addAttribute("mytotalCalories", strTotalCalories);
+        model.addAttribute("mytotalCalories", totalCalories);
 
         return "menu";
     }
